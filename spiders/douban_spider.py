@@ -4,6 +4,7 @@ import re
 
 from ..items import DoubanItem
 
+
 # 命令
 # 生成 spider py文件：scrapy genspider +name +url
 # 生成csv文件：scrapy crawl spider文件名 -o csv文件名
@@ -34,6 +35,4 @@ class DoubanSpiderSpider(scrapy.Spider):
         next_link = response.xpath(".//span[@class='next']//link/@href").extract()
         if next_link:
             next_link = next_link[0]
-            yield scrapy.Request("https://movie.douban.com/top250"+next_link,callback=self.parse)
-
-
+            yield scrapy.Request("https://movie.douban.com/top250" + next_link, callback=self.parse)
